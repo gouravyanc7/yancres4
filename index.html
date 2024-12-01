@@ -1243,7 +1243,7 @@ setInterval(showSlides, 8500);
   
     
     
-  <script>
+ <script>
     function sendMail(event) {
       // Prevent the default action if the link is clicked directly
       if (event) event.preventDefault();
@@ -1273,15 +1273,16 @@ setInterval(showSlides, 8500);
             window.open(gmailWebUrl, '_blank');
           }
         } else {
-          // Open Gmail web version in Chrome
+          // Open Gmail web version in Chrome and compose the email
           window.open(gmailWebUrl, '_blank');
         }
       } else {
-        // For Desktop, directly open Gmail web version
+        // For Desktop, directly open Gmail web version and compose the email
         window.open(gmailWebUrl, '_blank');
       }
     }
   </script>
+  
     
   <style>
    
