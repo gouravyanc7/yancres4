@@ -1262,7 +1262,9 @@ setInterval(showSlides, 8500);
       
       if (isMobile) {
         // Prompt the user to choose Gmail App or Web
-        if (confirm("Would you like to open this email in the Gmail app or in Chrome?")) {
+        const userChoice = confirm("Would you like to open this email in the Gmail app? Click 'Cancel' to open in Chrome.");
+        
+        if (userChoice) {
           // Open Gmail app
           const openedGmailApp = window.open(gmailAppUrl, '_blank');
           if (!openedGmailApp) {
