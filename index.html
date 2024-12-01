@@ -1232,7 +1232,83 @@ setInterval(showSlides, 8500);
         </div>
       </div>
     </div>
-  </section>   
+  </section>  
+
+    <section class="contact-section" id="mail">
+    <p class="intro-text" style="color: black;">Ready to embark on your journey of growth and empowerment? Contact us today!</p>
+    <button class="email-button" onclick="sendMail()">Email Us</button>
+    
+    <p class="info-text">Reach out to us at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@yanc.in">hello@yanc.in</a> for any questions or to join YANC.</p>
+
+  
+    
+    <script>
+      function sendMail() {
+        // Check if the user is on a mobile device
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
+        const mailTo = "hello@yanc.in";
+        const subject = "Inquiry from Your Website";
+        const body = "Hello,%0A%0AI would like to learn more about your services.%0A%0ABest Regards,";
+        
+        // Gmail URL format for mobile
+        const gmailAppUrl = `googlegmail://co?to=${mailTo}&subject=${subject}&body=${body}`;
+  
+        // Gmail Web URL
+        const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${mailTo}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  
+        if (isMobile) {
+          // Try to open Gmail app
+          const gmailAppOpened = window.open(gmailAppUrl, '_blank');
+          if (!gmailAppOpened) {
+            // If Gmail app fails, open the web version of Gmail
+            window.open(gmailWebUrl, '_blank');
+          }
+        } else {
+          // For desktop, directly open the Gmail web version
+          window.open(gmailWebUrl, '_blank');
+        }
+      }
+    </script>
+    
+  <style>
+   
+    .contact-section {
+      text-align: center;
+      padding: 50px;
+    }
+  
+    .intro-text {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      
+    }
+  
+    /* Email Us Button */
+    .email-button {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  
+    .email-button:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  
+    /* Info Text */
+    .info-text {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #0c0c0c;
+    }
+  </style>
+  </section>
 <footer class="footer">
         <a href="#home" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
         <h4 style="color: white; text-align: center;">© 2024 Your Company. All rights reserved.</h4><br><br>
