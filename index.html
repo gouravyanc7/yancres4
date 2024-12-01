@@ -1242,30 +1242,27 @@ setInterval(showSlides, 8500);
 
   
     
-    
- <script>
+    <script>
     function sendMail(event) {
       // Prevent the default action if the link is clicked directly
       if (event) event.preventDefault();
 
       const mailTo = "hello@yanc.in";
       const subject = "Inquiry from Your Website";
-      
-      // Correct line breaks in the body
       const body = `Hello,\n\nI would like to learn more about your services.\n\nBest Regards,`;
 
       // Gmail URL format for mobile and web
       const gmailAppUrl = `googlegmail://co?to=${mailTo}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(mailTo)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
+
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      
+
       if (isMobile) {
         // Prompt the user to choose Gmail App or Web
         const userChoice = confirm("Would you like to open this email in the Gmail app? Click 'Cancel' to open in Chrome.");
-        
+
         if (userChoice) {
-          // Open Gmail app
+          // Try opening Gmail app first
           const openedGmailApp = window.open(gmailAppUrl, '_blank');
           if (!openedGmailApp) {
             // If Gmail app doesn't open, fallback to web version
