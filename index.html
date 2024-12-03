@@ -1241,8 +1241,7 @@ setInterval(showSlides, 8500);
   <p class="info-text">Reach out to us at <a href="mailto:hello@yanc.in" onclick="sendMail()">hello@yanc.in</a> for any questions or to join YANC.</p>
 
   
-    
-    <script>
+   <script>
   function sendMail(event) {
     if (event) event.preventDefault();
 
@@ -1263,24 +1262,22 @@ setInterval(showSlides, 8500);
       if (userChoice) {
         const openedGmailApp = window.open(gmailAppUrl, '_blank');
         if (!openedGmailApp) {
-          alert("Gmail app not found, opening in browser.");
+          alert("Gmail app not found, opening in Chrome.");
           window.open(gmailWebUrl, '_blank');
         }
       } else {
         const openedMailTo = window.open(mailtoUrl, '_blank');
         if (!openedMailTo) {
-          alert("Failed to open Gmail or mail client, opening in browser.");
+          alert("Failed to open mail client, opening in Chrome.");
           window.open(gmailWebUrl, '_blank');
         }
       }
     } else {
-      const openedGmailWeb = window.open(gmailWebUrl, '_blank');
-      if (!openedGmailWeb) {
-        alert("Failed to open Gmail, please check your browser settings.");
-      }
+      window.open(gmailWebUrl, '_blank');
     }
   }
 </script>
+
 
   <style>
    
