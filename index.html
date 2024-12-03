@@ -1243,44 +1243,45 @@ setInterval(showSlides, 8500);
   
     
     <script>
-    function sendMail(event) {
-      // Prevent the default action if the link is clicked directly
-      if (event) event.preventDefault();
+  function sendMail(event) {
+    if (event) event.preventDefault();
 
-      const mailTo = "hello@yanc.in";
-      const subject = "Inquiry from Your Website";
-      const body = `Hello,\n\nI would like to learn more about your services.\n\nBest Regards,`;
+    const mailTo = "hello@yanc.in";
+    const subject = "Inquiry from Your Website";
+    const body = "Hello,\n\nI would like to learn more about your services.\n\nBest Regards,";
+    
+    const encodedBody = encodeURIComponent(body).replace(/%0A/g, '\n');
+    const gmailAppUrl = `googlegmail://co?to=${mailTo}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(mailTo)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodedBody}`;
+    
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-      // Gmail URL format for mobile and web
-      const gmailAppUrl = `googlegmail://co?to=${mailTo}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(mailTo)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-      if (isMobile) {
-        // Prompt the user to choose Gmail App or Web
-        const userChoice = confirm("Would you like to open this email in the Gmail app? Click 'Cancel' to open in Chrome.");
-
-        if (userChoice) {
-          // Try opening Gmail app first
-          const openedGmailApp = window.open(gmailAppUrl, '_blank');
-          if (!openedGmailApp) {
-            // If Gmail app doesn't open, fallback to web version
-            alert("Gmail app not found, opening in Chrome.");
-            window.open(gmailWebUrl, '_blank');
-          }
-        } else {
-          // Open Gmail web version in Chrome and compose the email
+    if (isMobile) {
+      const userChoice = confirm("Would you like to open this email in the Gmail app? Click 'Cancel' to open in Chrome.");
+      
+      if (userChoice) {
+        const openedGmailApp = window.open(gmailAppUrl, '_blank');
+        if (!openedGmailApp) {
+          alert("Gmail app not found, opening in browser.");
           window.open(gmailWebUrl, '_blank');
         }
       } else {
-        // For Desktop, directly open Gmail web version and compose the email
-        window.open(gmailWebUrl, '_blank');
+        const openedMailTo = window.open(mailtoUrl, '_blank');
+        if (!openedMailTo) {
+          alert("Failed to open Gmail or mail client, opening in browser.");
+          window.open(gmailWebUrl, '_blank');
+        }
+      }
+    } else {
+      const openedGmailWeb = window.open(gmailWebUrl, '_blank');
+      if (!openedGmailWeb) {
+        alert("Failed to open Gmail, please check your browser settings.");
       }
     }
-  </script>
-  
-    
+  }
+</script>
+
   <style>
    
     .contact-section {
